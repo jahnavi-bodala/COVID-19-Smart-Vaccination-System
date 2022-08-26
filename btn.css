@@ -1,0 +1,25 @@
+
+	h1{text-align: center;}
+	.button {
+    background-color: #FC6E51;
+    border: 1px solid #FC6E51;
+    height: 40px;
+    border-radius: 200px;
+    color: #fff;
+    font-size: 100%;
+    font-weight: bold;
+    width: 51%;
+    text-transform: uppercase;
+    margin-top: 10px;
+
+}
+
+input[type=submit]:hover {
+  background-color: black;
+}
+
+
+
+
+
+

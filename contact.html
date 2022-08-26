@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Home Page</title>
+ <link rel="stylesheet" type="text/css" href="css/style.css">
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Josefin+Slab:wght@100&display=swap" rel="stylesheet">
+<style> 
+    h2
+{
+text-align: center; font-size: 1.5cm; padding: 40px; border: 1px; margin: 0%;
+color:black;
+}
+
+img{ float:left;
+}
+
+h1{
+text-align:center; font-size:35px; word-spacing:5px;
+text-shadow: 4px 4px 3px darkgrey; margin-bottom: 2px; margin-top: 7px;
+color: rgb(74, 129, 129);
+}
+.dd
+{
+padding:10px;
+background-color: #dddbe2 ; border-top:2px solid grey; border-bottom:2px solid grey; border-left: 2px solid grey; border-right: 2px solid grey; margin-bottom: 3px;
+}
+.dd a
+{
+text-decoration: none;
+}
+.dd a:hover
+{
+    color:black;
+}
+.dropbtn1, .dd a
+{
+color: black; width:100px;
+font-size: 16px; border: none ; cursor: pointer ;
+background-color: #e7e1e1;
+}
+a{
+
+font-family: 'Times New Roman', Times, serif;
+}
+
+.logo{  background:#DCDCDC; border-top:2px solid rgb(158, 88, 88); border-bottom:2px solid rgb(194, 92, 92);
+}
+.centered {
+
+position: absolute; top: 70%;
+left: 70%;
+transform: translate(-50%, -50%);
+
+}
+.heading {
+
+text-align: center; 
+position: absolute; 
+padding:15px; ;
+}
+.text{
+text-align: center; position: absolute; top: 55%; padding-left: 35%;
+}
+#contact {
+
+text-align: center;  padding: 2px;
+font-size: 20px;
+background-color:powderblue;
+}
+body
+{ 
+  height:800px;
+}
+.section-header{ text-align: center; font-size: 25px;
+margin-bottom: 10px; font-weight: bold;
+text-transform: uppercase;
+
+}
+#contact {
+
+text-align: center;  padding: 2px;
+font-size: 20px;
+background-color:powderblue;
+}
+
+.section-header{ text-align: center; font-size: 25px;
+margin-bottom: 10px; font-weight: bold;
+text-transform: uppercase;
+
+}
+
+#contact .contact-info { margin-bottom: 10px; text-align: center;
+}
+
+#contact .contact-info i { font-size: 48px; display: inline-block; margin-bottom: 10px;
+ 
+color: #18d26e;
+
+}
+
+.contact-address{ padding-left: 35px; float: left;
+}
+
+#contact .contact-info address, #contact .contact-info p { margin-bottom: 0;
+color: #000;
+
+}
+
+#contact .contact-info h3 { font-size: 18px;
+margin-bottom: 15px; font-weight: bold;
+text-transform: uppercase; color: #999;
+}
+
+.contact-phone{ float: right;
+padding-right: 15%;
+
+}
+
+.contact-info a {
+ 
+color: #000;
+
+text-decoration: none;
+
+}
+
+#contact .contact-info a:hover { color: #18d26e;
+}
+
+#contact .contact-address, #contact .contact-phone, #contact .contact-email { margin-bottom: 20px;
+}
+
+.contact-email{ padding-right: 30%;
+}
+
+
+
+</style>
+</head>
+
+<body>
+<div class="logo">
+<img src="data:image/jpeg;base64,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" />
+<h1>Gayathri Vidya Parishad College Of Engineering For Women</h1>
+<h3 style="text-align: center; margin-top:0px;margin-bottom:15px;color:maroon;">(Approved by AICTE New Delhi, Affiliated to JNTUK Kakinada)<br>
+(Accredited by National Board of Accreditation(NBA) for B.Tech CSE,ECE & IT - Valid from 2019-20 to 2021-22)<br>
+Kommadi, Madhurawada, Visakhapatnam</h3>
+</div>
+<div class="dd" style="text-align:center;padding: 8px 8px;">
+<a href="home.html" style="padding: 10px; font-size: 30px;">Home</a>
+<a href="about.html" style="padding:10px; font-size:30px">About</a>
+<a href="homeb.html" style="padding:10px; font-size:30px">Vaccination Portal</a>
+<a href="contact.html" style="padding: 10px; font-size:30px;" >Contact us</a>
+</div>
+
+
+
+
+<section id="contact" >
+ 
+    <div class="container">
+    
+    
+    <div class="row contact-info">
+    
+    <div class="col-md-4">
+    
+    <div class="contact-address">
+    
+    <i class="ion-ios-location-outline"></i>
+    
+    <h3 style="color: black;">Address</h3>
+    
+    <h4>Madhurawada, Visakhapatnam-530048, AP, India.</h4>
+    
+    </div>
+    
+    </div>
+    
+    <div class="col-md-4">
+    
+    <div class="contact-phone">
+    
+    <i class="ion-ios-telephone-outline"></i>
+    
+    <h3 style="color: black;">Phone Number</h3>
+    
+    <p style="text-align:center; margin-right:35px;"><a href="tel:+919494130993">&nbsp;&nbsp;&nbsp;+91 7095212875</a></p>
+    <p style="text-align:center; margin-right:35px;"><a href="tel:+918686344422">&nbsp;&nbsp;&nbsp;+91 6304885985</a></p>
+    <p style="text-align:center; margin-right:35px;"><a href="tel:+919959356759">&nbsp;&nbsp;&nbsp;+91 8686344422</a></p>
+    <p style="text-align:center; margin-right:35px;"><a href="tel:+919908596094">&nbsp;&nbsp;&nbsp;+91 9381016640</a></p>
+    
+  
+    
+    
+    
+    </div>
+    
+    </div>
+    
+    <div class="col-md-4">
+    
+    <div class="contact-email">
+    
+    <i class="ion-ios-email-outline"></i>
+    
+    <h3 style="color: black;">Email</h3>
+     
+    <p style="text-align:center; margin-left:400px;"><a href="mailto:18jg1a0541.lalitha@gvpcew.ac.in">18jg1a0541.lalitha@gvpcew.ac.in</a></p>
+    <p style="text-align:center; margin-left:400px;"><a href="mailto:18jg1a0512.jahnavi@gvpcew.ac.in">&nbsp;18jg1a0512.jahnavi@gvpcew.ac.in</a></p>
+    <p style="text-align:center; margin-left:400px;"><a href="mailto:18jg1a0537.preethi@gvpcew.ac.in"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;18jg1a0537.preethi@gvpcew.ac.in</a></p>
+    <p style="text-align:center; margin-left:400px;"><a href="mailto:18jg1a0514.pravalika@gvpcew.ac.in">&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;18jg1a0514.pravalika@gvpcew.ac.in</a></p>
+    </div>
+    </div>
+    </div> 
+    </div> 
+    </div>
+    </div>
+    </section>
+    
+</body>
+</html>

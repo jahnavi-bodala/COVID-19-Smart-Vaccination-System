@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+ <!-- jquery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<!-- web3 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.4.0/web3.min.js"></script> 
+<script src="./node_modules/web3/dist/web3.min.js"></script>
+<title>Online Vaccination System</title>
+</head>
+<link rel="stylesheet" href="input.css">
+<style>
+	.button {
+        
+  background-color: #FC6E51;
+  border: none;
+  color: white;
+  padding: 15px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+	}
+    .button:hover {background-color:#666}
+
+.button:active {
+  background-color: #666;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+</style>
+<body>
+	<br></br> <br></br> <br></br>
+	<input type="button" class="button" id="logout" value=" LOGOUT" style="float: right;">
+	<br></br>  <br></br>   <br></br>
+ <button id="sminf" class="button" >PROFILE</button>
+ <button id="cs" class="button" >CREATE SLOT</button>
+ <button id="vs" class="button">VIEW SLOT</button>
+ <button id="avc" class="button">VACCINE COUNT</button>
+ <button id="aov" class="button">AVAILABILITY OF VACCINE</button>
+ <button id="vvpc" class="button">VACCINATED PEOPLE COUNT</button>
+ <button id="mrc" class="button">MINIMAL CONGREGATION</button>
+</body>
+<script>
+	$(document).ready(function(){
+    web3.eth.getAccounts().then(function(accounts){
+                var acc=accounts[0];
+                return contract.methods.getSM().call({from:acc});
+            }).then(function(result){
+                 $("#sminf").click(function() {
+                    document.getElementById("Name").innerHTML = result[0];   
+                 document.getElementById("Password").innerHTML = result[1];              
+        })   
+	})  
+})  
+	document.getElementById("sminf").onclick = function () {
+        location.href = "sminfo.html";
+    };
+    document.getElementById("cs").onclick = function () {
+        location.href = "menucreation.html";
+    };
+	document.getElementById("vs").onclick = function () {
+        location.href = "viewslot.html";
+    };
+	document.getElementById("avc").onclick = function () {
+        location.href = "assignvaccinecount.html";
+    };
+	document.getElementById("aov").onclick = function () {
+        location.href = "vaccineavailability.html";
+    };
+	document.getElementById("vvpc").onclick = function () {
+        location.href = "vaccinatedcount.html";
+    };
+	document.getElementById("logout").onclick = function () {
+        location.href = "index.html";
+    };
+    document.getElementById("mrc").onclick = function () {
+        location.href = "mimised.html";
+    };
+	</script>
+ </body>
+ </html>

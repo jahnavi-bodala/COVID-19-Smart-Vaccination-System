@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- jquery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<!-- web3 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.4.0/web3.min.js"></script>
+<script src="./node_modules/web3/dist/web3.min.js"></script>
+<title>Online Vaccination System</title>
+</head>
+<link rel="stylesheet" href="input.css">
+<link rel="stylesheet" href="btn.css">
+<link rel="stylesheet" href="prev.css">
+<script type="text/javascript">
+    async function loadweb3()
+    {
+        if(window.ethereum)
+        {
+            window.web3=new Web3(window.ethereum);
+            window.ethereum.enable(); 
+        } 
+    }           
+     async function loadContract()
+     {
+        web3=new Web3(web3.currentProvider);
+          var ABI =[
+	{
+		"inputs": [],
+		"stateMutability": "payable",
+		"type": "constructor"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_index",
+				"type": "uint256"
+			}
+		],
+		"name": "AvailabilityofVaccines",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "vaccinecount",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "hash",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_index",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "SlotId",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "slotBooked_on",
+				"type": "string"
+			}
+		],
+		"name": "BookSlot",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "CIDList",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "hash",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_index",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "slotId",
+				"type": "uint256"
+			}
+		],
+		"name": "CancelSlot",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "DoctorList",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_index",
+				"type": "uint256"
+			}
+		],
+		"name": "GetMenudetails",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "i",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "l",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "s1",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "s2",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "s3",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "cs1",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "cs2",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "cs3",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_name",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "age",
+				"type": "uint256"
+			}
+		],
+		"name": "SignupSlotManager",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "ind",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "count_of_vaccines",
+				"type": "uint256"
+			}
+		],
+		"name": "Vaccine_count",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "index",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "location",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "slottime1",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "slottime2",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "slottime3",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "s1c",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "s2c",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "s3c",
+				"type": "uint256"
+			}
+		],
+		"name": "createMenu",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "did",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "doctormapping",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "Doctor",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "Age",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "Qualification",
+				"type": "string"
+			},
+			{
+				"internalType": "address",
+				"name": "id",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getDoctor",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "_name",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_age",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "_qualification",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getSM",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "_name",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "age",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "get_CIDList",
+		"outputs": [
+			{
+				"internalType": "string[]",
+				"name": "",
+				"type": "string[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "get_Doctor_List",
+		"outputs": [
+			{
+				"internalType": "address[]",
+				"name": "",
+				"type": "address[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "get_SlotManager_List",
+		"outputs": [
+			{
+				"internalType": "address[]",
+				"name": "",
+				"type": "address[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "i",
+				"type": "uint256"
+			}
+		],
+		"name": "gethash",
+		"outputs": [
+			{
+				"internalType": "bytes32",
+				"name": "hash",
+				"type": "bytes32"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"name": "isPatient",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "did",
+				"type": "address"
+			}
+		],
+		"name": "is_Doctor",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "value",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "did",
+				"type": "address"
+			}
+		],
+		"name": "is_SlotManager",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "value",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "hash",
+				"type": "bytes32"
+			}
+		],
+		"name": "patientdetails",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "name",
+				"type": "string"
+			},
+			{
+				"internalType": "uint8",
+				"name": "age",
+				"type": "uint8"
+			},
+			{
+				"internalType": "string",
+				"name": "bloodgroup",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "image",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "status",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "slotBooked_on",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "slotBooked_at",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "slotLocation",
+				"type": "string"
+			},
+			{
+				"internalType": "bool",
+				"name": "isvaccinated",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"name": "patientmapping",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "isuidgenerated",
+				"type": "bool"
+			},
+			{
+				"internalType": "string",
+				"name": "name",
+				"type": "string"
+			},
+			{
+				"internalType": "uint8",
+				"name": "age",
+				"type": "uint8"
+			},
+			{
+				"internalType": "string",
+				"name": "bloodgroup",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "image",
+				"type": "string"
+			},
+			{
+				"internalType": "bool",
+				"name": "isvaccinated",
+				"type": "bool"
+			},
+			{
+				"internalType": "uint256",
+				"name": "index",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "status",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "slotBooked_at",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "slotBooked_on",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "slotLocation",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "pid",
+		"outputs": [
+			{
+				"internalType": "bytes32",
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "cid",
+				"type": "string"
+			}
+		],
+		"name": "receive_CID",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_name",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "age",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "qualification",
+				"type": "string"
+			}
+		],
+		"name": "registerDoctor",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "sSlotlist",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "loc",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "id",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "index",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "slot1",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "slot2",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "slot3",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "s1_c",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "s2_c",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "s3_c",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "s_tc",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "vcount",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "vaccinated_people_count",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_name",
+				"type": "string"
+			},
+			{
+				"internalType": "uint8",
+				"name": "_age",
+				"type": "uint8"
+			},
+			{
+				"internalType": "string",
+				"name": "_bloodgroup",
+				"type": "string"
+			}
+		],
+		"name": "signupPatient",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "slotmanagermapping",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "slotmanager",
+				"type": "string"
+			},
+			{
+				"internalType": "address",
+				"name": "id",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "age",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "hash",
+				"type": "bytes32"
+			}
+		],
+		"name": "updatePatientDetails",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "hash",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "string",
+				"name": "image",
+				"type": "string"
+			}
+		],
+		"name": "uploadimage",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "vaccinatedcount",
+		"outputs": [
+			{
+				"internalType": "string[]",
+				"name": "",
+				"type": "string[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "index",
+				"type": "uint256"
+			}
+		],
+		"name": "viewvaccinatedcount",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "i",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "loc",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+];
+ var Address ='0xff15084c471585ce6c2918C117Fcb945d55F1184'
+          return await new web3.eth.Contract(ABI,Address) 
+    }   
+      async function load()
+      {
+        await loadweb3();
+         window.contract = await loadContract();
+        }
+    load(); 
+ </script>
+	<body>
+		<div>
+		<center> <h3>VACCINE AVAILABILITY</h3>
+	<br></br>
+    Index:
+    <input type="text"  id="index" placeholder="Enter Index" >
+<br></br>
+<input type="submit" class="button" id="view"  name="" value="view"><br>
+<a href="smfunctions.html" class="previous round">&#8249 &#8249;</a>
+
+<script>
+$("#view").click(function() {
+    index= $('#index').val( ); 
+    web3.eth.getAccounts().then(function(accounts)
+    {
+        publicKey= web3.currentProvider.selectedAddress;
+        var acc=accounts[0];
+        return contract.methods.AvailabilityofVaccines(index).call({from:acc});
+    }).then(function(vaccinecount){
+        var pd=vaccinecount;
+		document.getElementById("vaccine count").innerHTML = pd;
+    })  
+    })    
+        </script>     
+		 <body>
+			<h3>Available vaccines: <span id ="vaccine count"></span></h3> </center>
+        </html>
+		 </div>
+</body>
+</html>    

@@ -1,0 +1,74 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    font-family: Arial, Helvetica Neue, sans-serif;
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://3.bp.blogspot.com/-B5ELAwZBS2I/XNTwclI8r6I/AAAAAAAANNM/u-hoGYH8I3w4h6hOcKCXMTp3UU3E2anxgCLcBGAs/s1600/background%2Bpowerpoint%2Bmedical%2Bstethoscope.JPG);
+    background-size: cover;
+    height: 100vh;
+    background-position: center;
+}
+input[type=text] {
+    width: 40%;
+    margin-left: 3%;
+    margin-bottom: 20px;
+    font-size: 100%;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-bottom: 1px solid #fff;
+}
+input[type=submit] {
+  background-color: #FC6E51;
+    border: 1px solid #FC6E51;
+    height: 40px;
+    border-radius: 200px;
+    color: #fff;
+    font-size: 100%;
+    font-weight: bold;
+    width: 51%;
+    text-transform: uppercase;
+    margin-top: 10px;
+
+}
+input[type=submit]:hover {
+  background-color: black;
+}
+div {
+  margin-top:130px;
+    height: 355px;
+    width: 400px;
+    background-color: #000;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -70%);
+    opacity: 0.75;
+    color: #fff;
+    padding: 80px 30px;
+}
+.Image img{
+  width:22%;
+  height: auto;
+  border-radius :10%;
+  position:absolute;
+  top:9%;
+  left:40%;
+}
+.people img{
+  width:22%;
+  height: auto;
+  border-radius :10%;
+  position:absolute;
+  top:45%;
+  left:40%;
+}
+.registration-box img{
+  display:none;
+}
+
+a img{
+  display:block;
+  text-align: bottom;
+}
+    

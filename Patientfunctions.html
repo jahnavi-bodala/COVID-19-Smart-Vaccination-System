@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+ <!-- jquery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<!-- web3 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.4.0/web3.min.js"></script> 
+<script src="./node_modules/web3/dist/web3.min.js"></script>
+<title>Online Vaccination System</title>
+</head>
+<link rel="stylesheet" href="input.css">
+<style>
+	h2{text-align: center;}
+	h3{text-align: center;}
+	.button {
+  background-color: #FC6E51;
+  border: none;
+  color: white;
+  padding: 15px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+	}
+	.button:hover {background-color:#666}
+
+.button:active {
+  background-color: #666;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+</style>
+ <body>
+	 <br></br>
+ <h2>PATIENT FUNCTIONS</h2>
+ <br></br> <br></br>
+ <input type="button" id="vp" class="button" name="" value="VIEW DETAILS">
+  <button id="pp" class="button" >UPLOAD IMAGE</button> 
+ <button id="vs" class="button">VIEW SLOT</button>
+ <button id="bs" class="button">BOOK SLOT</button>
+ <button id="crbs" class="button">CANCEL & RE-BOOK SLOT</button>
+ <input type="button" class="button" id="logout" value="LOGOUT" style="float: right;">
+<script>
+    document.getElementById("vp").onclick =function() {
+        location.href = "viewpatdetails.html";
+    };
+	document.getElementById("pp").onclick =function() {
+    	location.href = "patimage.html";
+    };
+	document.getElementById("vs").onclick =function() {
+        location.href = "viewslot.html";
+    };
+	document.getElementById("bs").onclick =function() {
+        location.href = "bookslot.html";
+	};
+	document.getElementById("crbs").onclick = function() {
+        location.href = "rebookslot.html";
+    };
+	document.getElementById("logout").onclick = function() {
+       location.href = "index.html";
+    };
+</script>
+ </body>
+ </html>
